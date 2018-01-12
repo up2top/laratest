@@ -5,12 +5,10 @@ namespace Tests\Unit;
 use App\Post;
 use Carbon\Carbon;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
-
     use DatabaseTransactions;
 
     /**
@@ -23,8 +21,8 @@ class ExampleTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testPostArchives() {
-
+    public function testPostArchives()
+    {
         $first = factory(Post::class)->create();
 
         $second = factory(Post::class)->create([
