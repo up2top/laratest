@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\newMapVisitor;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +14,7 @@
 */
 
 Route::get('/', function () {
+    event(new newMapVisitor('Text variable'));
     return view('welcome');
 })->name('home');
 
