@@ -14,7 +14,7 @@ use App\Events\newMapVisitor;
 */
 
 Route::get('/', function () {
-    event(new newMapVisitor('Text variable'));
+    event(new newMapVisitor('Yahoo!'));
     return view('welcome');
 })->name('home');
 

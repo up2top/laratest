@@ -20,11 +20,9 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
   el: '#app',
   created() {
-    Echo.channel('mapChannel')
-      .listen('newMapVisitor', (e, data) => {
-        console.log(e);
-        console.log(data);
-        console.log('Yahoo!');
+    Echo.private('mapChannel')
+      .listen('newMapVisitor', (e) => {
+        console.log(e.message);
     });
   }
 });

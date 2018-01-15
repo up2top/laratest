@@ -992,10 +992,8 @@ Vue.component('example', __webpack_require__(40));
 var app = new Vue({
   el: '#app',
   created: function created() {
-    Echo.channel('mapChannel').listen('newMapVisitor', function (e, data) {
-      console.log(e);
-      console.log(data);
-      console.log('Yahoo!');
+    Echo.private('mapChannel').listen('newMapVisitor', function (e) {
+      console.log(e.message);
     });
   }
 });
