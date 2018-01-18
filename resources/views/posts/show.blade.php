@@ -14,7 +14,7 @@
     @foreach ($post->comments as $comment)
         <li class="list-group-item">
             <strong>
-                {{ $comment->created_at->diffForHumans() }}: 
+                {{ $comment->created_at->diffForHumans() }}:
             </strong>
             {{ $comment->body }}
         </li>
@@ -24,7 +24,7 @@
 
   <hr />
 
-  @if (Auth::check())
+  @can('createComment', $post)
   <div class="card">
     <div class="card-block">
       <form method="POST" action="/posts/{{ $post->id }}/comments">
@@ -41,5 +41,5 @@
       </form>
     </div>
   </div>
-  @endif
+  @endcan
 @endsection

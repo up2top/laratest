@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Location;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class LocationsController extends Controller
 {
@@ -26,7 +26,11 @@ class LocationsController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::denies('create-location')) {
+            //abort(403, 'You are not authorized to add locations.');
+            return redirect()->home();
+        }
+
         return view('locations.create');
     }
 
@@ -38,7 +42,6 @@ class LocationsController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate(request(), [
             'title' => 'required',
             'lat' => 'required|numeric',

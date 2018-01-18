@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         $this->comments()->save($comment);
     }
+
+    public function owns($related)
+    {
+        return $this->id == $related->user_id;
+    }
 }
